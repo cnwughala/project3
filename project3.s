@@ -12,5 +12,9 @@ main:
 	li $a1, 1001
 	syscall
 	
+	addi $s0, 4
+	addi $s1, 35
+	move $t0, $a0
+	
 sub_a:
 sub_b:
