@@ -6,4 +6,8 @@ userInput: .space 1001
 	
 main:
 	li $v0, 8
+	la $a0, userInput
+	li $a1, 1001
+	syscall
+	
 	
