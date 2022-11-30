@@ -16,9 +16,13 @@ main:
 	addi $s1, 35
 	move $t0, $a0
 	
-	sw $sp, 0($t0)
+	sw $sp, ($t0)
+	
+	jal sub_a
 	
 sub_a:
+	lw $t1, 28($sp)
+	addi $t1, 4
 	
 	
 sub_b:
