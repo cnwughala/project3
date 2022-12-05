@@ -39,6 +39,10 @@ aLoop:
 	add $a0, $t3, $zero
 	syscall
 	
+	li $v0, 11
+	la $a0, 47
+	syscall
+	
 error:
 	
 	
