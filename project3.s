@@ -19,6 +19,7 @@ main:
 	jal sub_a
 	
 tabspace:
+	bge $t3, 1, error
 	addi $a0, $a0, 1
 	move $t1, $a0
 	j sub_a
@@ -27,12 +28,11 @@ sub_a:
 	lb $t2, ($t1)
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
-	addChar:
-	bge $t1, 97, lowercase
-	bge $t1, 65, uppercase
-	bge $t1, 48, number
-	beq $t1, 32, tsCheck
+	addi $t1, 1
+	addi $t3, 1
+	bne $t2, 44, 
 	
 	jal sub_b
 	
 sub_b:
+
