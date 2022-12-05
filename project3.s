@@ -22,7 +22,8 @@ sub_a:
 	lw $t1, 0($sp)
 	lb $t2, ($t1)
 	addi $t1, 1
-	j sub_a
+	beq $t1, 9, tabspace
+	beq $t1, 32, tabspace
 	
 	jal sub_b
 	
