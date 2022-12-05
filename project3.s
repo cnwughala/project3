@@ -21,11 +21,13 @@ main:
 lastTS:
 	addi $t1, $t1, 1
 	lb $t2, ($t1)
-	beq $t1, 9, lastTS
-	beq $t1, 32, lastTS
-	beq $t1, 44, a_exit
+	beq $t2, 9, lastTS
+	beq $t2, 32, lastTS
+	beq $t2, 44, a_exit
+	
 tabspace:
 	bge $t3, 1, lastTS
+	addi $t1, $t1, 1
 	j aLoop
 sub_a:
 	lw $t1, 0($sp)
