@@ -18,12 +18,16 @@ main:
 	sw $t0, 0($sp)
 	jal sub_a
 	
+tabspace:
+	addi $a0, $a0, 1
+	move $t1, $a0
+	j sub_a
 sub_a:
 	lw $t1, 0($sp)
 	lb $t2, ($t1)
-	addi $t1, 1
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
+	addi $t1, 1
 	
 	jal sub_b
 	
