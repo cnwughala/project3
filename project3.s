@@ -10,8 +10,8 @@ main:
 	li $a1, 1001
 	syscall
 	
-	addi $s0, 4
-	addi $s1, 35
+	addi $s0, $zero, 4
+	addi $s1, $zero,35
 	move $t0, $a0
 	
 	addi $sp, $sp, -4
@@ -19,7 +19,7 @@ main:
 	jal sub_a
 	
 tabspace:
-	bge $t3, 1, error
+	bge $t3, 1, lastTS
 	addi $a0, $a0, 1
 	move $t1, $a0
 	j aLoop
@@ -29,13 +29,13 @@ aLoop:
 	lb $t2, ($t1)
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
-	#if $t3 > $s0, invalid input
-	addi $t1, 1
-	addi $t3, 1
+	bgt $t3, $s0, error
+	addi $t1, $zero, 1
+	addi $t3, $zero, 1
 	bne $t2, 44, aLoop
 	
 	li $v0, 1
-	addi $t3, -1
+	addi $t3, $zero, -1
 	add $a0, $t3, $zero
 	syscall
 	
@@ -43,7 +43,10 @@ aLoop:
 	la $a0, 47
 	syscall
 	
+	jal sub_b
+	
 error:
+	addi $s2, $zero, 1
 	li $v0, 11
 	la $a0, 63
 	syscall
