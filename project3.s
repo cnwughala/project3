@@ -31,15 +31,15 @@ sub_a:
 	lw $t1, 0($sp)
 aLoop:
 	lb $t2, ($t1)
-	beq $t1, 9, tabspace
-	beq $t1, 32, tabspace
+	beq $t2, 44, a_exit
+	beq $t2, 9, tabspace
+	beq $t2, 32, tabspace
 	bgt $t3, $s0, error
-	addi $t1, $zero, 1
-	addi $t3, $zero, 1
+	addi $t1, $t1, 1
+	addi $t3, $t3, 1
 	bne $t2, 44, aLoop
 a_exit:
 	li $v0, 1
-	addi $t3, $zero, -1
 	add $a0, $t3, $zero
 	syscall
 	
