@@ -20,7 +20,10 @@ main:
 	
 lastTS:
 	addi $t1, $t1, 1
-	bne 
+	lb $t2, ($t1)
+	beq $t1, 9, lastTS
+	beq $t1, 32, lastTS
+	beq $t1, 44, a_exit
 tabspace:
 	bge $t3, 1, lastTS
 	j aLoop
@@ -33,9 +36,8 @@ aLoop:
 	bgt $t3, $s0, error
 	addi $t1, $zero, 1
 	addi $t3, $zero, 1
-	add $t4, $t3, $zero
 	bne $t2, 44, aLoop
-	
+a_exit:
 	li $v0, 1
 	addi $t3, $zero, -1
 	add $a0, $t3, $zero
