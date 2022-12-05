@@ -11,17 +11,18 @@ main:
 	syscall
 	
 	addi $s0, $zero, 4
-	addi $s1, $zero,35
+	addi $s1, $zero, 35
 	move $t0, $a0
 	
 	addi $sp, $sp, -4
 	sw $t0, 0($sp)
 	jal sub_a
 	
+lastTS:
+	addi $t1, $t1, 1
+	bne 
 tabspace:
 	bge $t3, 1, lastTS
-	addi $a0, $a0, 1
-	move $t1, $a0
 	j aLoop
 sub_a:
 	lw $t1, 0($sp)
@@ -32,6 +33,7 @@ aLoop:
 	bgt $t3, $s0, error
 	addi $t1, $zero, 1
 	addi $t3, $zero, 1
+	add $t4, $t3, $zero
 	bne $t2, 44, aLoop
 	
 	li $v0, 1
