@@ -14,12 +14,13 @@ main:
 	addi $s1, 35
 	move $t0, $a0
 	
+mainLoop:
+	lb $t1, ($t0)
 	addi $sp, $sp, -1
-	
+	sb $t1, ($sp)
+	bne $t1, 44, mainLoop
 	jal sub_a
-	
 sub_a:
-	
 	jal sub_b
 	
 sub_b:
