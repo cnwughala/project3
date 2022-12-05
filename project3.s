@@ -27,7 +27,11 @@ sub_a:
 	lb $t2, ($t1)
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
-	addi $t1, 1
+	addChar:
+	bge $t1, 97, lowercase
+	bge $t1, 65, uppercase
+	bge $t1, 48, number
+	beq $t1, 32, tsCheck
 	
 	jal sub_b
 	
