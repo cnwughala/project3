@@ -29,13 +29,18 @@ aLoop:
 	lb $t2, ($t1)
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
+	#if $t3 > $s0, invalid input
 	addi $t1, 1
 	addi $t3, 1
-	#if $t3 > $s0, invalid input
 	bne $t2, 44, aLoop
+	
 	li $v0, 1
+	addi $t3, -1
 	add $a0, $t3, $zero
 	syscall
+	
+error:
+	
 	
 	jal sub_b
 	
