@@ -5,7 +5,6 @@ userInput: .space 1001
 	.globl main
 	
 main:
-	li $sp, $sp, -32
 	
 	li $v0, 8
 	la $a0, userInput
@@ -16,13 +15,14 @@ main:
 	addi $s1, 35
 	move $t0, $a0
 	
-	sw $sp, ($t0)
+	addi $sp, $sp, -1001
 	
 	jal sub_a
 	
 sub_a:
-	lw $t1, 28($sp)
-	addi $t1, 4
+	lw $t1, (28)$sp
+	add $s2, $t1, $zero
 	
+	jal sub_b
 	
 sub_b:
