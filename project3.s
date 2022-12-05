@@ -22,15 +22,16 @@ tabspace:
 	bge $t3, 1, error
 	addi $a0, $a0, 1
 	move $t1, $a0
-	j sub_a
+	j aLoop
 sub_a:
 	lw $t1, 0($sp)
+aLoop:
 	lb $t2, ($t1)
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
 	addi $t1, 1
 	addi $t3, 1
-	bne $t2, 44, 
+	bne $t2, 44, aLoop
 	
 	jal sub_b
 	
