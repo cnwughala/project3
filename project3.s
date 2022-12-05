@@ -15,14 +15,14 @@ main:
 	move $t0, $a0
 	
 	addi $sp, $sp, -4
-	sw $t0, ($sp)
+	sw $t0, 0($sp)
 	jal sub_a
 	
 sub_a:
-	lb $t1, ($t0)
-	addi $t9, 1
-	sb $t1, ($sp)
-	bne $t1, 44, sub_a
+	lw $t1, 0($sp)
+	lb $t2, ($t1)
+	addi $t1, 1
+	j sub_a
 	
 	jal sub_b
 	
