@@ -44,8 +44,10 @@ aLoop:
 	syscall
 	
 error:
-	
-	
+	li $v0, 11
+	la $a0, 63
+	syscall
+
 	jal sub_b
 	
 sub_b:
