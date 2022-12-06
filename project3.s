@@ -125,3 +125,5 @@ addLoop:
 	sub $t7, $t7, $t7
 	add $t2, $t1, $t2
 	addi $t4, 1
+	bgt $t4, $s1, exit2
+	beq $t9, $t0, exit1
