@@ -14,14 +14,14 @@ main:
 	addi $s1, $zero, 35
 	move $t0, $a0
 	
-	addi $sp, $sp, -8
-	sw $t0, 4($sp)
+	addi $sp, $sp, -12
+	sw $t0, 8($sp)
 	jal sub_a
 	
 
 	
 sub_a:
-	lw $t1, 4($sp)
+	lw $t1, 8($sp)
 aLoop:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
@@ -105,6 +105,8 @@ error:
 	la $a0, 63
 	syscall
 	
+#-----------------------------------------------------------------------------------------#
+	
 sub_b:
 	beq $a0, 63, next
 	lw $t5, 0($sp)
@@ -146,6 +148,7 @@ base35:
 addLoop:
 	sub $t7, $t7, $t7
 	add $t6, $t2, $t6
+	sw $t6, 
 	addi $t4, 1
 	j bLoop
 
