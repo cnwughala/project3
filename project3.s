@@ -112,3 +112,8 @@ number:
 	bge $t2, 58, exit2
 	sub $t2, $t2, 48
 	j base35
+
+base35:
+	beq $t7, $t4, addLoop
+	multu $t1, $t8
+	mflo $t5
