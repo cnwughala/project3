@@ -24,6 +24,11 @@ lastTS:
 	beq $t2, 0, a_exit
 	addi $t1, $t1, 1
 	lb $t2, ($t1)
+	ble $t2, 47, error
+	bge $t2, 122, error
+	beq $t2, 58, error
+	beq $t2, 59, error
+	beq $t2, 60, error
 	beq $t2, 9, lastTS
 	beq $t2, 32, lastTS
 	
