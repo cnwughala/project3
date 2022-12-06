@@ -24,6 +24,8 @@ lastTS:
 	beq $t2, 0, a_exit
 	addi $t1, $t1, 1
 	lb $t2, ($t1)
+	beq $t2, 9, lastTS
+	beq $t2, 32, lastTS
 	ble $t2, 47, error
 	bge $t2, 122, error
 	beq $t2, 58, error
@@ -40,8 +42,6 @@ lastTS:
 	beq $t2, 94, error
 	beq $t2, 95, error
 	beq $t2, 96, error
-	beq $t2, 9, lastTS
-	beq $t2, 32, lastTS
 	
 
 tabspace:
@@ -83,6 +83,7 @@ aLoop:
 	j aLoop
 	
 a_exit:
+	
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -96,7 +97,7 @@ a_exit:
 	add $s3, $t0, $t8
 	sw $s3, 0($sp)
 	jal sub_b
-	jr $ra
+
 	
 error:
 	addi $s2, $zero, 1
@@ -105,6 +106,7 @@ error:
 	syscall
 	
 sub_b:
+	
 	beq $a0, 63, next
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
@@ -152,4 +154,6 @@ b_exit:
 next:
 	addi $sp, $sp, -4
 	sw $t6, 4($sp)
-	jr $ra
+	
+	li $v0, 10
+	syscall
