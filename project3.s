@@ -39,6 +39,7 @@ lastTS:
 	beq $t2, 93, error
 	beq $t2, 94, error
 	beq $t2, 95, error
+	beq $t2, 96, error
 	beq $t2, 9, lastTS
 	beq $t2, 32, lastTS
 	
