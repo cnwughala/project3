@@ -114,6 +114,9 @@ number:
 	j base35
 
 base35:
-	beq $t7, $t4, addLoop
+	# beq $t7, $t4, addLoop
 	multu $t1, $t8
 	mflo $t5
+	add $t1, $t5, $zero
+	addi $t7, 1
+	bne $t7, $t4, base35
