@@ -87,7 +87,8 @@ error:
 	syscall
 	
 sub_b:
-	lw t5, 0($sp)
+	lw $t5, 0($sp)
+	add $t1, $t5, $t3
 bLoop:
-	lb $t2, ($t4)
+	lb $t2, ($t1)
 	
