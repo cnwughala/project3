@@ -95,4 +95,8 @@ bLoop:
 	bge $t2, 65, uppercase
 	bge $t2, 48, number
 	addi $t1, $t1, -1
-	
+	bne $t5, $t1, bLoop
+lowercase:
+	bge $t1, 122, exit2
+	sub $t1, $t1, 87
+	j base35	
