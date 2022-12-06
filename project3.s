@@ -19,14 +19,10 @@ main:
 	jal sub_a
 	
 lastTS:
+	lb $t2, ($t1)
 	beq $t2, 44, a_exit
 	beq $t2, 10, a_exit
 	beq $t2, 0, a_exit
-	addi $t1, $t1, 1
-	lb $t2, ($t1)
-	beq $t2, 9, lastTS
-	beq $t2, 32, lastTS
-	ble $t2, 47, error
 	bge $t2, 122, error
 	beq $t2, 58, error
 	beq $t2, 59, error
@@ -42,6 +38,11 @@ lastTS:
 	beq $t2, 94, error
 	beq $t2, 95, error
 	beq $t2, 96, error
+	addi $t1, $t1, 1
+	beq $t2, 9, lastTS
+	beq $t2, 32, lastTS
+	ble $t2, 47, error
+
 	
 
 tabspace:
