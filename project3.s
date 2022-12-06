@@ -30,7 +30,7 @@ lastTS:
 
 tabspace:
 	bge $t3, 1, lastTS
-	addi $t8, $zero, 1
+	addi $t8, $t8, 1
 	addi $t1, $t1, 1
 	j aLoop
 	
