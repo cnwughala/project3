@@ -40,6 +40,11 @@ aLoop:
 	beq $t2, 32, tabspace
 	ble $t2, 47, error
 	bge $t2, 123, error
+	beq $t2, 58, error
+	beq $t2, 59, error
+	beq $t2, 60, error
+	beq $t2, 61, error
+	beq $t2, 62, error
 	
 	bgt $t3, $s0, error
 	addi $t1, $t1, 1
