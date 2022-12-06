@@ -154,11 +154,15 @@ b_exit:
 	li $v0, 1
 	move $a0, $t6
 	syscall
+	lw $t1, 8($sp)
+	bne $t1, 44, ending
 	
+next:
+	li $v0, 8
+	la $a0, 44
+	syscall
+	jal sub_a
 ending:
 	li $v0, 10
 	syscall
 	
-next:
-	lw $t1, 8($sp)
-	beq $t1, 44, 
