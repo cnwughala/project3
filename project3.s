@@ -99,16 +99,16 @@ bLoop:
 	bne $t5, $t1, bLoop
 
 lowercase:
-	bge $t1, 122, exit2
-	sub $t1, $t1, 87
+	bge $t2, 122, exit2
+	sub $t2, $t2, 87
 	j base35	
 	
 uppercase:
-	bge $t1, 90, exit2
-	sub $t1, $t1, 55
+	bge $t2, 90, exit2
+	sub $t2, $t2, 55
 	j base35
 
 number:
-	bge $t1, 58, exit2
-	sub $t1, $t1, 48
+	bge $t2, 58, exit2
+	sub $t2, $t2, 48
 	j base35
