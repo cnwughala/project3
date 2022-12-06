@@ -105,6 +105,7 @@ error:
 	syscall
 	
 sub_b:
+	beq $a0, 63, next
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
 	
@@ -147,6 +148,8 @@ b_exit:
 	li $v0, 1
 	move $a0, $t6
 	syscall
+	
+next:
 	addi $sp, $sp, -4
 	sw $t6, 4($sp)
 	jr $ra
