@@ -66,6 +66,7 @@ aLoop:
 	j aLoop
 	
 a_exit:
+	move $s4, $t1
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -73,7 +74,9 @@ a_exit:
 	li $v0, 11
 	la $a0, 47
 	syscall
-	
+	addi $sp, $sp, 4
+	addi $sp, $sp, -4
+	sw $s4, 0($sp)
 	jal sub_b
 	
 error:
@@ -85,3 +88,4 @@ error:
 	jr $ra
 	
 sub_b:
+	
