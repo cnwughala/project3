@@ -91,4 +91,8 @@ sub_b:
 	add $t1, $t5, $t3
 bLoop:
 	lb $t2, ($t1)
+	bge $t2, 97, lowercase
+	bge $t2, 65, uppercase
+	bge $t2, 48, number
+	addi $t1, $t1, -1
 	
