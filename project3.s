@@ -29,8 +29,8 @@ lastTS:
 	
 
 tabspace:
-	move $s3, $t1
 	bge $t3, 1, lastTS
+	move $s3, $t1
 	addi $t1, $t1, 1
 	j aLoop
 	
@@ -67,7 +67,6 @@ aLoop:
 	j aLoop
 	
 a_exit:
-	move $s4, $t1
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -75,9 +74,10 @@ a_exit:
 	li $v0, 11
 	la $a0, 47
 	syscall
+	
 	addi $sp, $sp, 4
 	addi $sp, $sp, -4
-	sw $s4, 0($sp)
+	sw $s3, 0($sp)
 	jal sub_b
 	
 error:
@@ -87,8 +87,7 @@ error:
 	syscall
 	
 sub_b:
-	sub $s3, $s4, $t3
-	move $t4, $s4
+	lw t5, 0($sp)
 bLoop:
 	lb $t2, ($t4)
 	
