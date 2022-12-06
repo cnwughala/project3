@@ -114,16 +114,16 @@ number:
 	j base35
 
 base35:
-	# beq $t7, $t4, addLoop
-	multu $t1, $t8
+	beq $t7, $t8, addLoop
+	multu $t2, $s1
 	mflo $t5
-	add $t1, $t5, $zero
+	add $t6, $t5, $zero
 	addi $t7, 1
-	bne $t7, $t4, base35
+	bne $t7, $t8, base35
 
 addLoop:
 	sub $t7, $t7, $t7
 	add $t2, $t1, $t2
-	addi $t4, 1
-	bgt $t4, $s1, exit2
+	addi $t8, 1
+	bgt $t8, $s0, exit2
 	beq $t9, $t0, exit1
