@@ -86,7 +86,9 @@ error:
 	la $a0, 63
 	syscall
 	
-	bne 
-	
 sub_b:
+	sub $s3, $s4, $t3
+	move $t4, $s4
+bLoop:
+	lb $t2, ($t4)
 	
