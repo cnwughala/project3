@@ -14,8 +14,8 @@ main:
 	addi $s1, $zero, 35
 	move $t0, $a0
 	
-	addi $sp, $sp, -4
-	sw $t0, 0($sp)
+	addi $sp, $sp, -8
+	sw $t0, 4($sp)
 	jal sub_a
 	
 lastTS:
@@ -52,7 +52,7 @@ tabspace:
 	j aLoop
 	
 sub_a:
-	lw $t1, 0($sp)
+	lw $t1, 4($sp)
 aLoop:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
@@ -84,7 +84,7 @@ aLoop:
 	j aLoop
 	
 a_exit:
-	move $s4, $t2
+	sw $t2, 0($sp)
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
