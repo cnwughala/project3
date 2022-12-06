@@ -57,9 +57,11 @@ aLoop:
 	bgt $t3, $s0, error
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
-	bne $t2, 44, aLoop
-	bne $t2, 10, aLoop
-	bne $t2, 0, aLoop
+	beq $t2, 44, a_exit
+	beq $t2, 10, a_exit
+	beq $t2, 0, a_exit
+	
+	j aLoop
 	
 a_exit:
 	li $v0, 1
