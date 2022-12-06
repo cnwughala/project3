@@ -89,15 +89,16 @@ error:
 sub_b:
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
-	
+	addi $t5, $t5, 1
 bLoop:
+	beq $t5, $t1, b_exit
 	lb $t2, ($t1)
 	addi $t1, $t1, -1
 	bge $t2, 97, lowercase
 	bge $t2, 65, uppercase
 	bge $t2, 48, number
-	bne $t5, $t1, bLoop
-	j b_exit
+	j bLoop
+	
 lowercase:
 	sub $t2, $t2, 87
 	j base35	
@@ -111,17 +112,20 @@ number:
 	j base35
 
 base35:
-	beq $t7, $t8, addLoop
+	beq $t7, $t4, addLoop
 	multu $t2, $s1
 	mflo $t9
 	add $t6, $t9, $zero
 	addi $t7, 1
-	bne $t7, $t8, base35
+	bne $t7, $t4, base35
 
 addLoop:
 	sub $t7, $t7, $t7
-	add $s5, $t6, $t2
-	addi $t8, 1
+	add $t6, $t6, $t2
+	addi $t4, 1
 	j bLoop
 
 b_exit:
+	li $v0, 1
+	add $a0, $t6, $zero
+	syscall
