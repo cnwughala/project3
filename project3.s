@@ -44,7 +44,7 @@ aLoop:
 	beq $t2, 9, tabspace
 	beq $t2, 32, tabspace
 	ble $t2, 47, error
-	bge $t2, 123, error
+	bge $t2, 122, error
 	beq $t2, 58, error
 	beq $t2, 59, error
 	beq $t2, 60, error
@@ -52,6 +52,7 @@ aLoop:
 	beq $t2, 62, error
 	beq $t2, 63, error
 	beq $t2, 64, error
+	beq $t2, 90, error
 	beq $t2, 91, error
 	beq $t2, 92, error
 	beq $t2, 93, error
@@ -81,7 +82,7 @@ a_exit:
 	
 error:
 	addi $s2, $zero, 1
-	li $v0, 11
+	li $v0, 11 
 	la $a0, 63
 	syscall
 
