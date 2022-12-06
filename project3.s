@@ -107,3 +107,8 @@ uppercase:
 	bge $t1, 90, exit2
 	sub $t1, $t1, 55
 	j base35
+
+number:
+	bge $t1, 58, exit2
+	sub $t1, $t1, 48
+	j base35
