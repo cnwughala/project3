@@ -105,6 +105,8 @@ error:
 	la $a0, 63
 	syscall
 	
+	li $v0, 10
+	syscall
 sub_b:
 	
 	beq $a0, 63, next
