@@ -84,6 +84,7 @@ aLoop:
 	j aLoop
 	
 a_exit:
+	move $s4, $t2
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -150,7 +151,7 @@ b_exit:
 	syscall
 	
 next:
-	
+	jal sub_a
 	addi $sp, $sp, -4
 	sw $t6, 4($sp)
 ending:
