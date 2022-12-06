@@ -120,3 +120,8 @@ base35:
 	add $t1, $t5, $zero
 	addi $t7, 1
 	bne $t7, $t4, base35
+
+addLoop:
+	sub $t7, $t7, $t7
+	add $t2, $t1, $t2
+	addi $t4, 1
