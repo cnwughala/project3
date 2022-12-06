@@ -38,6 +38,9 @@ aLoop:
 	beq $t2, 44, a_exit
 	beq $t2, 9, tabspace
 	beq $t2, 32, tabspace
+	ble $t2, 47, error
+	bge $t2, 123, error
+	
 	bgt $t3, $s0, error
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
@@ -60,7 +63,6 @@ error:
 	la $a0, 63
 	syscall
 
-	jal sub_b
+	jr $ra
 	
 sub_b:
-
