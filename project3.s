@@ -24,6 +24,9 @@ lastTS:
 	beq $t2, 9, lastTS
 	beq $t2, 32, lastTS
 	beq $t2, 44, a_exit
+	beq $t2, 10, a_exit
+	beq $t2, 0, a_exit
+	
 
 tabspace:
 	move $s3, $t1
@@ -36,6 +39,8 @@ sub_a:
 aLoop:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
+	beq $t2, 10, a_exit
+	beq $t2, 0, a_exit
 	beq $t2, 9, tabspace
 	beq $t2, 32, tabspace
 	ble $t2, 47, error
@@ -54,12 +59,9 @@ aLoop:
 	beq $t2, 95, error
 	beq $t2, 96, error
 	
-	bgt $t3, $s0, error
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
-	beq $t2, 44, a_exit
-	beq $t2, 10, a_exit
-	beq $t2, 0, a_exit
+	bgt $t3, $s0, error
 	
 	j aLoop
 	
