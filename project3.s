@@ -45,6 +45,8 @@ aLoop:
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
 	bne $t2, 44, aLoop
+	bne $t2, 10, aLoop
+	bne $t2, 0, aLoop
 	
 a_exit:
 	li $v0, 1
