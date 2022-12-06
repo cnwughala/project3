@@ -24,11 +24,13 @@ lastTS:
 	beq $t2, 9, lastTS
 	beq $t2, 32, lastTS
 	beq $t2, 44, a_exit
-	
+
 tabspace:
+	move $s3, $t1
 	bge $t3, 1, lastTS
 	addi $t1, $t1, 1
 	j aLoop
+	
 sub_a:
 	lw $t1, 0($sp)
 aLoop:
@@ -40,6 +42,7 @@ aLoop:
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
 	bne $t2, 44, aLoop
+	
 a_exit:
 	li $v0, 1
 	add $a0, $t3, $zero
