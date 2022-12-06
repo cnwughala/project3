@@ -84,7 +84,6 @@ aLoop:
 	j aLoop
 	
 a_exit:
-	
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -101,15 +100,11 @@ a_exit:
 
 	
 error:
-	addi $s2, $zero, 1
 	li $v0, 11 
 	la $a0, 63
 	syscall
 	
-	li $v0, 10
-	syscall
 sub_b:
-	
 	beq $a0, 63, next
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
@@ -155,8 +150,9 @@ b_exit:
 	syscall
 	
 next:
+	
 	addi $sp, $sp, -4
 	sw $t6, 4($sp)
-	
+ending:
 	li $v0, 10
 	syscall
