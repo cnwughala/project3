@@ -96,6 +96,7 @@ a_exit:
 	add $s3, $t0, $t8
 	sw $s3, 0($sp)
 	jal sub_b
+	jr $ra
 	
 error:
 	addi $s2, $zero, 1
@@ -146,3 +147,6 @@ b_exit:
 	li $v0, 1
 	move $a0, $t6
 	syscall
+	addi $sp, $sp, -4
+	sw $t6, 4($sp)
+	jr $ra
