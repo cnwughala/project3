@@ -77,6 +77,7 @@ a_exit:
 	
 	addi $sp, $sp, 4
 	addi $sp, $sp, -4
+	add $s3, $t0, $t8
 	sw $s3, 0($sp)
 	jal sub_b
 	
@@ -89,11 +90,11 @@ error:
 sub_b:
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
-
+	
 bLoop:
 	beq $t5, $t1, b_exit
-	lb $t2, ($t1)
 	addi $t1, $t1, -1
+	lb $t2, ($t1)
 	bge $t2, 97, lowercase
 	bge $t2, 65, uppercase
 	bge $t2, 48, number
@@ -115,7 +116,7 @@ base35:
 	beq $t7, $t4, addLoop
 	multu $t2, $s1
 	mflo $t9
-	add $t6, $t9, $t8
+	add $t2, $t9, $zero
 	addi $t7, 1
 	bne $t7, $t4, base35
 
