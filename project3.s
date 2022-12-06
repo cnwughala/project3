@@ -45,6 +45,9 @@ aLoop:
 	beq $t2, 60, error
 	beq $t2, 61, error
 	beq $t2, 62, error
+	beq $t2, 63, error
+	beq $t2, 64, error
+	beq $t2, 91, error
 	
 	bgt $t3, $s0, error
 	addi $t1, $t1, 1
