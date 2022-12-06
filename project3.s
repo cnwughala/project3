@@ -109,6 +109,10 @@ sub_b:
 	beq $a0, 63, next
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
+	sub $t7, $t7, $t7
+	sub $t4, $t4, $t4
+	sub $t6, $t6, $t6
+	sub $t2, $t2, $t2
 	
 bLoop:
 	beq $t5, $t1, b_exit
