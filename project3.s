@@ -18,6 +18,11 @@ main:
 	sw $t0, 4($sp)
 	jal sub_a
 	
+
+	
+sub_a:
+	lw $t1, 4($sp)
+	
 lastTS:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
@@ -43,16 +48,12 @@ lastTS:
 	beq $t2, 32, lastTS
 	ble $t2, 47, error
 
-	
-
 tabspace:
 	bge $t3, 1, lastTS
 	addi $t8, $t8, 1
 	addi $t1, $t1, 1
 	j aLoop
 	
-sub_a:
-	lw $t1, 4($sp)
 aLoop:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
