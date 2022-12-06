@@ -155,9 +155,10 @@ b_exit:
 	move $a0, $t6
 	syscall
 	
-next:
-	lw $t1, 8($sp)
-	beq $t1,
 ending:
 	li $v0, 10
 	syscall
+	
+next:
+	lw $t1, 8($sp)
+	beq $t1, 44, 
