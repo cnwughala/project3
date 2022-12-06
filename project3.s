@@ -30,7 +30,7 @@ lastTS:
 
 tabspace:
 	bge $t3, 1, lastTS
-	move $s3, $t1
+	addi $t8, $zero, 1
 	addi $t1, $t1, 1
 	j aLoop
 	
@@ -89,7 +89,7 @@ error:
 sub_b:
 	lw $t5, 0($sp)
 	add $t1, $t5, $t3
-	addi $t5, $t5, 1
+
 bLoop:
 	beq $t5, $t1, b_exit
 	lb $t2, ($t1)
@@ -115,17 +115,17 @@ base35:
 	beq $t7, $t4, addLoop
 	multu $t2, $s1
 	mflo $t9
-	add $t6, $t9, $zero
+	add $t6, $t9, $t8
 	addi $t7, 1
 	bne $t7, $t4, base35
 
 addLoop:
 	sub $t7, $t7, $t7
-	add $t6, $t6, $t2
+	add $t6, $t2, $t6
 	addi $t4, 1
 	j bLoop
 
 b_exit:
 	li $v0, 1
-	add $a0, $t6, $zero
+	move $a0, $t6
 	syscall
