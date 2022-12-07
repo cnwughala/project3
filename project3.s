@@ -14,14 +14,14 @@ main:
 	addi $s1, $zero, 35
 	move $t0, $a0
 	
-	addi $sp, $sp, -16
-	sw $t0, 12($sp)
+	addi $sp, $sp, -4
+	sw $t0, 0($sp)
 	jal sub_a
 	
 
 	
 sub_a:
-	lw $t1, 12($sp)
+	lw $t1, 0($sp)
 aLoop:
 	lb $t2, ($t1)
 	beq $t2, 44, a_exit
@@ -32,7 +32,6 @@ aLoop:
 	
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
-	bgt $t3, $s0, error
 	
 	j aLoop
 	
