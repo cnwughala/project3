@@ -37,7 +37,7 @@ aLoop:
 	beq $t1, 32, tabspace
 	
 	addi $t0, $t0, 1
-	addi $t2, $t2, 1
+	addi $t2, $t2, 1 #counter for length of legal input
 	j aLoop
 	
 lastTS:
@@ -52,7 +52,7 @@ lastTS:
 
 tabspace:
 	bge $t2, 1, lastTS
-	addi $t3, $t3, 1
+	addi $t3, $t3, 1 #counter for length of starting tabs and spaces
 	addi $t0, $t0, 1
 	j aLoop
 	
@@ -90,7 +90,10 @@ cEnd:
 	la $a0, 44
 	syscall
 	move $t0, $s3
+	addi $t0, $t0, 1
+	add $t2, $zero, $zero
 	j aLoop
+	
 nEnd:
 	lw $ra, 8($sp)
 	jr $ra
