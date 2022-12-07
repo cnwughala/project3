@@ -146,7 +146,7 @@ addLoop:
 	j commaEnding
 
 next:
-	li $v0, 11
+	li $v0, 1
 	addi $t4, $t8, $zero
 	addi $sp, $sp, -4
 	sw $t4, 0($sp)
