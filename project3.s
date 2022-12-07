@@ -128,8 +128,9 @@ addLoop:
 	add $t8, $t1, $t8
 	addi $t6, 1
 	bgt $t6, $s0, error
+	bne $s8, $zero, enterEnding
+	j commaEnding
 	
-
 b_exit:
 	li $v0, 1
 	move $a0, $t6
@@ -139,6 +140,8 @@ b_exit:
 	bne $t2, 44, ending
 	
 next:
+	li $v0, 10
+	syscall
 	li $v0, 11
 	la $a0, 44
 	syscall
