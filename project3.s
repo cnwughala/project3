@@ -91,6 +91,8 @@ commaEnding:
 	bge $t1, 65, uppercase
 	bge $t1, 48, number
 	beq $t1, 44, error
+	beq $t1, 32, tsCheck
+	beq $t1, 9, tsCheck
 	beq $s2, $t0, next
 	j error
 	
@@ -102,8 +104,9 @@ error:
 	jr $ra
 	
 tsCheck:
-	bne $t4, 0, exit2
-	j iteration
+	bne $t6, 0, error
+	bne $s8, $zero, enterEnding
+	j commaEnding
 	
 lowercase:
 	bge $t1, 122, error
