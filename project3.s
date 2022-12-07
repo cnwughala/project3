@@ -128,6 +128,7 @@ addLoop:
 	add $t8, $t1, $t8
 	addi $t6, 1
 	bgt $t6, $s0, error
+	beq $s2, $t0, next 
 	bne $s8, $zero, enterEnding
 	j commaEnding
 	
