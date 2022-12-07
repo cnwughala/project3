@@ -17,7 +17,9 @@ main:
 	
 	addi $sp, $sp, -4
 	sw $t0, 0($sp)
+	
 	jal sub_a
+	addi $sp, $sp, 4
 	
 	li $v0, 10
 	syscall
