@@ -32,7 +32,6 @@ aLoop:
 	
 	addi $t0, $t0, 1
 	addi $t2, $t2, 1
-	
 	j aLoop
 	
 lastTS:
@@ -43,6 +42,7 @@ lastTS:
 	addi $t0, $t0, 1
 	beq $t1, 9, lastTS
 	beq $t1, 32, lastTS
+	j aLoop
 
 tabspace:
 	bge $t2, 1, lastTS
