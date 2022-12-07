@@ -61,6 +61,7 @@ a_exit:
 	
 	jal sub_b
 	beq $s6, $s7, noSlash
+	
 cEnd:
 	move $a0, $t6
 	syscall
@@ -70,7 +71,7 @@ cEnd:
 	syscall
 	
 	li $v0, 11
-	move $a0, 0($sp)
+	lw $a0, 0($sp)
 	syscall
 	
 noSlash:
@@ -154,11 +155,9 @@ addLoop:
 
 next:
 	li $v0, 1
-	addi $t4, $t8, $zero
+	add $t4, $t8, $zero
 	addi $sp, $sp, -4
 	sw $t4, 0($sp)
 	jr $ra
 	
-ending:
-	$jr ra
 	
