@@ -62,8 +62,11 @@ a_exit:
 	jal sub_b
 	move $a0, 0($sp)
 	syscall
-
+cEnd:
+	beq $s6, $s7, noSlash
 	
+noSlash:
+
 	move $a0, $t6
 	syscall
 	syscall
