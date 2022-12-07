@@ -83,8 +83,8 @@ a_exit:
 noSlash:
 	la $a0, 0($sp)
 	syscall
-	addi $sp, $sp, 4 #removes decimal/error
 	beq $s8, $s7, nEnd
+	
 cEnd:
 	li $v0, 11
 	la $a0, 44
@@ -93,8 +93,7 @@ cEnd:
 	syscall
 	
 nEnd:
-	addi $sp, $sp, 4 #removes substring
-	lw $ra, 0($sp)
+	lw $ra, 8($sp)
 	jr $ra
 	
 #-----------------------------------------------------------------------------------------#
