@@ -21,9 +21,9 @@ main:
 
 	
 sub_a:
-	lw $t0, 0($sp)
 	addi $sp, $sp, -4
 	sw $ra, 0($sp)
+	lw $t0, 0($sp)
 aLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, a_exit
@@ -76,6 +76,7 @@ bLoop:
 	beq $t1, 44, commaEnding
 	beq $t1, 10, enterEnding
 	beq $t1, 0, enterEnding
+	addi $t0, $t0, 1
 	j bLoop
 	
 	bge $t1, 97, lowercase
