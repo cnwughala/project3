@@ -80,8 +80,6 @@ a_exit:
 	beq $s8, $s7, nEnd
 
 noSlash:
-	move $a0, $t6
-	syscall
 	addi $sp, $sp, 4
 	
 nEnd:
