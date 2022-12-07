@@ -73,10 +73,14 @@ sub_b:
 	lw $t0, 0($sp)
 bLoop:
 	lb $t1, ($t0)
+	beq $t1, 44, commaEnding
+	beq $t1, 10, enterEnding
+	beq $t1, 0, enterEnding
+	j bLoop
+	
 	bge $t1, 97, lowercase
 	bge $t1, 65, uppercase
 	bge $t1, 48, number
-	j bLoop
 	
 lowercase:
 	sub $t2, $t2, 87
