@@ -80,9 +80,13 @@ bLoop:
 	addi $t0, $t0, 1
 	j bLoop
 	
+commaEnding:
+	addi $t0, $t0, -1
+	lb $t1, ($t0)
 	bge $t1, 97, lowercase
 	bge $t1, 65, uppercase
 	bge $t1, 48, number
+	beq $s2, $t0, next
 	
 lowercase:
 	sub $t2, $t2, 87
