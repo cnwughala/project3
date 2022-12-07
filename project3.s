@@ -22,6 +22,8 @@ main:
 	
 sub_a:
 	lw $t0, 0($sp)
+	addi $sp, $sp, -4
+	sw $ra, 0($sp)
 aLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, a_exit
