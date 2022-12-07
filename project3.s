@@ -31,28 +31,28 @@ aLoop:
 	beq $t1, 32, tabspace
 	
 	addi $t1, $t1, 1
-	addi $t3, $t3, 1
+	addi $t2, $t2, 1
 	
 	j aLoop
 	
 lastTS:
-	lb $t2, ($t1)
-	beq $t2, 44, a_exit
-	beq $t2, 10, a_exit
-	beq $t2, 0, a_exit
+	lb $t1, ($t0)
+	beq $t1, 44, a_exit
+	beq $t1, 10, a_exit
+	beq $t1, 0, a_exit
+	beq $t1, 9, lastTS
+	beq $t1, 32, lastTS
 	addi $t1, $t1, 1
-	beq $t2, 9, lastTS
-	beq $t2, 32, lastTS
 
 tabspace:
-	bge $t3, 1, lastTS
+	bge $t2, 1, lastTS
 	addi $t8, $t8, 1
 	addi $t1, $t1, 1
 	j aLoop
 	
 a_exit:
-	sw $t1, 12($sp)
-	sw $t2, 0($sp)
+	
+	sw $t1, 0($sp)
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
