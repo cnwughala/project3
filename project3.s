@@ -53,6 +53,7 @@ tabspace:
 	j aLoop
 	
 a_exit:
+	lw $s3, $t1
 	lw $s2, 4($sp)
 	add $s2, $s2, $t3
 	addi $sp, $sp, -4
