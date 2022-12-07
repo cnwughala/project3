@@ -15,11 +15,10 @@ main:
 	addi $s7, $zero, 1
 	move $t0, $a0
 	
-	addi $sp, $sp, -4
-	sw $t0, 0($sp)
+	addi $sp, $sp, -16
+	sw $t0, 12($sp)
 	
 	jal sub_a
-	addi $sp, $sp, 4
 	
 	li $v0, 10
 	syscall
@@ -90,6 +89,7 @@ cEnd:
 	la $a0, 44
 	syscall
 	move $t0, $s3
+	sw $s3, 4($sp)
 	addi $t0, $t0, 1
 	add $t2, $zero, $zero
 	add $t3, $zero, $zero
@@ -97,6 +97,7 @@ cEnd:
 	add $t5, $zero, $zero
 	add $t6, $zero, $zero
 	add $t7, $zero, $zero
+
 	j aLoop
 	
 nEnd:
@@ -117,6 +118,7 @@ bLoop:
 	
 enterEnding:
 	addi $s8, $zero, 1
+	
 commaEnding:
 	addi $t0, $t0, -1
 	lb $t1, ($t0)
