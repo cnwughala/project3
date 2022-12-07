@@ -60,9 +60,12 @@ a_exit:
 	sw $s2, 0($sp)
 	
 	jal sub_b
+	move $s7, 0($sp)
+	andi $t9, $s7, 63
+cEnd:
+erEnd:	
 	move $a0, $t6
 	syscall
-	lw $a0, 0($sp)
 	syscall
 	addi $sp, $sp, 4
 	
@@ -99,6 +102,7 @@ commaEnding:
 	j error
 	
 error:
+	addi $s6, $zero, 1
 	li $v0, 11
 	addi $t4, $zero, 63
 	addi $sp, $sp, -4
