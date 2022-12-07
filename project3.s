@@ -34,6 +34,15 @@ aLoop:
 	addi $t3, $t3, 1
 	
 	j aLoop
+	
+lastTS:
+	lb $t2, ($t1)
+	beq $t2, 44, a_exit
+	beq $t2, 10, a_exit
+	beq $t2, 0, a_exit
+	addi $t1, $t1, 1
+	beq $t2, 9, lastTS
+	beq $t2, 32, lastTS
 
 tabspace:
 	bge $t3, 1, lastTS
