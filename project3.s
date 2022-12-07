@@ -23,7 +23,7 @@ main:
 sub_a:
 	addi $sp, $sp, -4
 	sw $ra, 0($sp)
-	lw $t0, 0($sp)
+	lw $t0, 4($sp)
 aLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, a_exit
@@ -53,7 +53,7 @@ tabspace:
 	j aLoop
 	
 a_exit:
-	lw $s2, 0($sp)
+	lw $s2, 4($sp)
 	add $s2, $s2, $t3
 	addi $sp, $sp, -4
 	sw $s2, 0($sp)
