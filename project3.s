@@ -90,6 +90,10 @@ commaEnding:
 	beq $s2, $t0, next
 	j error
 	
+error:
+	li $v0, 11
+	addi $sp, $sp, -4
+	si 63, 0($sp)
 lowercase:
 	sub $t2, $t2, 87
 	j base35	
