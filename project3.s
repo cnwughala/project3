@@ -127,7 +127,8 @@ addLoop:
 	sub $t5, $t5, $t5
 	add $t8, $t1, $t8
 	addi $t6, 1
-	bgt $t4, $s0, error
+	bgt $t6, $s0, error
+	
 
 b_exit:
 	li $v0, 1
