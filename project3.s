@@ -53,7 +53,7 @@ tabspace:
 	j aLoop
 	
 a_exit:
-	lw $s3, $t1
+	move $s3, $t1
 	lw $s2, 4($sp)
 	add $s2, $s2, $t3
 	addi $sp, $sp, -4
@@ -88,7 +88,7 @@ commaEnding:
 	bge $t1, 48, number
 	beq $t1, 44, error
 	beq $s2, $t0, next
-	j error
+	j commaEnding
 	
 error:
 	li $v0, 11
