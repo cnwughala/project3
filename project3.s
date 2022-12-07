@@ -29,22 +29,6 @@ aLoop:
 	beq $t2, 0, a_exit
 	beq $t2, 9, tabspace
 	beq $t2, 32, tabspace
-	ble $t2, 47, error
-	bge $t2, 122, error
-	beq $t2, 58, error
-	beq $t2, 59, error
-	beq $t2, 60, error
-	beq $t2, 61, error
-	beq $t2, 62, error
-	beq $t2, 63, error
-	beq $t2, 64, error
-	beq $t2, 90, error
-	beq $t2, 91, error
-	beq $t2, 92, error
-	beq $t2, 93, error
-	beq $t2, 94, error
-	beq $t2, 95, error
-	beq $t2, 96, error
 	
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
@@ -57,25 +41,9 @@ lastTS:
 	beq $t2, 44, a_exit
 	beq $t2, 10, a_exit
 	beq $t2, 0, a_exit
-	bge $t2, 122, error
-	beq $t2, 58, error
-	beq $t2, 59, error
-	beq $t2, 60, error
-	beq $t2, 61, error
-	beq $t2, 62, error
-	beq $t2, 63, error
-	beq $t2, 64, error
-	beq $t2, 90, error
-	beq $t2, 91, error
-	beq $t2, 92, error
-	beq $t2, 93, error
-	beq $t2, 94, error
-	beq $t2, 95, error
-	beq $t2, 96, error
 	addi $t1, $t1, 1
 	beq $t2, 9, lastTS
 	beq $t2, 32, lastTS
-	ble $t2, 47, error
 
 tabspace:
 	bge $t3, 1, lastTS
@@ -84,7 +52,8 @@ tabspace:
 	j aLoop
 	
 a_exit:
-	sw $t2, 8($sp)
+	sw $t1, 12($sp)
+	sw $t2, 0($sp)
 	li $v0, 1
 	add $a0, $t3, $zero
 	syscall
@@ -94,7 +63,7 @@ a_exit:
 	syscall
 	
 	add $s3, $t0, $t8
-	sw $s3, 4($sp)
+	sw $s3, 8($sp)
 	jal sub_b
 
 	
@@ -107,7 +76,7 @@ error:
 	
 sub_b:
 	beq $a0, 63, next
-	lw $t5, 4($sp)
+	lw $t5, 8($sp)
 	add $t1, $t5, $t3
 	sub $t7, $t7, $t7
 	sub $t4, $t4, $t4
@@ -146,7 +115,7 @@ base35:
 addLoop:
 	sub $t7, $t7, $t7
 	add $t6, $t2, $t6
-	sw $t6, 0($sp)
+	sw $t6, 4($sp)
 	addi $t4, 1
 	j bLoop
 
@@ -154,14 +123,16 @@ b_exit:
 	li $v0, 1
 	move $a0, $t6
 	syscall
-	lw $t1, 8($sp)
-	bne $t1, 44, ending
+	lw $t1, 12($sp)
+	lw $t2, 0($sp)
+	bne $t2, 44, ending
 	
 next:
-	li $v0, 8
+	li $v0, 11
 	la $a0, 44
 	syscall
 	jal sub_a
+	
 ending:
 	li $v0, 10
 	syscall
