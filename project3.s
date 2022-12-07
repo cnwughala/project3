@@ -30,7 +30,7 @@ aLoop:
 	beq $t1, 9, tabspace
 	beq $t1, 32, tabspace
 	
-	addi $t1, $t1, 1
+	addi $t0, $t0, 1
 	addi $t2, $t2, 1
 	
 	j aLoop
@@ -40,18 +40,18 @@ lastTS:
 	beq $t1, 44, a_exit
 	beq $t1, 10, a_exit
 	beq $t1, 0, a_exit
+	addi $t0, $t0, 1
 	beq $t1, 9, lastTS
 	beq $t1, 32, lastTS
-	addi $t1, $t1, 1
 
 tabspace:
 	bge $t2, 1, lastTS
 	addi $t8, $t8, 1
-	addi $t1, $t1, 1
+	addi $t0, $t0, 1
 	j aLoop
 	
 a_exit:
-	
+	addi $sp, $sp, -4
 	sw $t1, 0($sp)
 	li $v0, 1
 	add $a0, $t3, $zero
