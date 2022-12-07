@@ -60,6 +60,8 @@ a_exit:
 	sw $s2, 0($sp)
 	
 	jal sub_b
+
+	addi $sp, $sp, 4
 	
 	li $v0, 1
 	syscall
@@ -93,9 +95,12 @@ commaEnding:
 error:
 	li $v0, 11
 	addi $t5, $zero, 63
+	addi $sp, $sp, -4
+	sw $t5, 0($sp)
 	jr $ra
 	
 lowercase:
+	bge $t1, 122, exit2
 	sub $t2, $t2, 87
 	j base35	
 	
