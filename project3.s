@@ -70,16 +70,12 @@ a_exit:
 #-----------------------------------------------------------------------------------------#
 	
 sub_b:
-
 	lw $t0, 0($sp)
-	
 bLoop:
-	beq $t5, $t1, b_exit
-	addi $t1, $t1, -1
-	lb $t2, ($t1)
-	bge $t2, 97, lowercase
-	bge $t2, 65, uppercase
-	bge $t2, 48, number
+	lb $t1, ($t0)
+	bge $t1, 97, lowercase
+	bge $t1, 65, uppercase
+	bge $t1, 48, number
 	j bLoop
 	
 lowercase:
