@@ -74,16 +74,14 @@ a_exit:
 	
 	li $v0, 1
 	lw $a0, 0($sp)
-	syscall	
-	addi $sp, $sp, 4
+	syscall
 	
-	beq $s8, $s7, nEnd
-
 noSlash:
-	addi $sp, $sp, 4
-	
+	addi $sp, $sp, 4 #removes decimal/error
+	beq $s8, $s7, nEnd
+cEnd:
 nEnd:
-	addi $sp, $sp, 4
+	addi $sp, $sp, 4 #removes substring
 	lw $ra, 0($sp)
 	jr $ra
 	
