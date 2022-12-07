@@ -91,6 +91,7 @@ commaEnding:
 	beq $t1, 44, error
 	beq $s2, $t0, next
 	j error
+
 	
 error:
 	li $v0, 11
@@ -126,7 +127,8 @@ addLoop:
 	add $t8, $t1, $t8
 	addi $t6, 1
 	bgt $t4, $s0, error
-
+	li $v0, 10
+	syscall
 
 b_exit:
 	li $v0, 1
