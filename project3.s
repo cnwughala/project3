@@ -18,7 +18,7 @@ main:
 	sw $t0, 0($sp)
 	jal sub_a
 	
-
+	
 	
 sub_a:
 	addi $sp, $sp, -4
@@ -147,6 +147,5 @@ next:
 	jr $ra
 	
 ending:
-	li $v0, 10
-	syscall
+	$jr ra
 	
