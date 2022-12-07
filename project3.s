@@ -92,6 +92,11 @@ cEnd:
 	move $t0, $s3
 	addi $t0, $t0, 1
 	add $t2, $zero, $zero
+	add $t3, $zero, $zero
+	add $t4, $zero, $zero
+	add $t5, $zero, $zero
+	add $t6, $zero, $zero
+	add $t7, $zero, $zero
 	j aLoop
 	
 nEnd:
