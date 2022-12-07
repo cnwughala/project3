@@ -51,23 +51,19 @@ tabspace:
 	j aLoop
 	
 a_exit:
-	sw $s2 
+	lw $s2, 0($sp)
+	add $s2, $s2, $t3
 	addi $sp, $sp, -4
-	sw $t1, 0($sp)
+	sw $s2, 0($sp)
+	
+	jal sub_b
+	
 	li $v0, 1
-	add $a0, $t3, $zero
 	syscall
 	
 	li $v0, 11
 	la $a0, 47
 	syscall
-	
-	add $s3, $t0, $t8
-	sw $s3, 8($sp)
-	
-	li $v0, 10
-	syscall
-	jal sub_b
 	
 #-----------------------------------------------------------------------------------------#
 	
