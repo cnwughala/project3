@@ -64,10 +64,11 @@ a_exit:
 	sw $s2, 0($sp)
 	
 	jal sub_b
+	beq $s6, $s7, noSlash
+	
 	move $a0, $t6
 	syscall
-	
-	beq $s6, $s7, noSlash
+
 	li $v0, 11
 	la $a0, 47
 	syscall
@@ -77,6 +78,8 @@ a_exit:
 	syscall
 	
 noSlash:
+	move $a0, 0($sp)
+	syscall
 	addi $sp, $sp, 4 #removes decimal/error
 	beq $s8, $s7, nEnd
 cEnd:
