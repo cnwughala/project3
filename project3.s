@@ -74,12 +74,9 @@ a_exit:
 	lw $a0, 0($sp)
 	syscall
 	
-	li $v0, 10
-	syscall
 	
 noSlash:
 	move $a0, $t6
-	syscall
 	syscall
 	addi $sp, $sp, 4
 	
