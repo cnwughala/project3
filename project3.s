@@ -66,11 +66,11 @@ cEnd:
 	syscall
 	
 	li $v0, 11
-	move $a0, 0($sp)
+	la $a0, 47
 	syscall
 	
 	li $v0, 11
-	la $a0, 47
+	move $a0, 0($sp)
 	syscall
 	
 noSlash:
