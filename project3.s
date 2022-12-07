@@ -60,11 +60,13 @@ a_exit:
 	sw $s2, 0($sp)
 	
 	jal sub_b
-
+	move $a0, $t6
+	syscall
+	lw $a0, 0($sp)
+	syscall
 	addi $sp, $sp, 4
 	
-	li $v0, 1
-	syscall
+	
 	
 	li $v0, 11
 	la $a0, 47
