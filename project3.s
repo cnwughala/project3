@@ -21,28 +21,19 @@ main:
 
 	
 sub_a:
-	lw $t1, 0($sp)
+	lw $t0, 0($sp)
 aLoop:
-	lb $t2, ($t1)
-	beq $t2, 44, a_exit
-	beq $t2, 10, a_exit
-	beq $t2, 0, a_exit
-	beq $t2, 9, tabspace
-	beq $t2, 32, tabspace
+	lb $t1, ($t0)
+	beq $t1, 44, a_exit
+	beq $t1, 10, a_exit
+	beq $t1, 0, a_exit
+	beq $t1, 9, tabspace
+	beq $t1, 32, tabspace
 	
 	addi $t1, $t1, 1
 	addi $t3, $t3, 1
 	
 	j aLoop
-	
-lastTS:
-	lb $t2, ($t1)
-	beq $t2, 44, a_exit
-	beq $t2, 10, a_exit
-	beq $t2, 0, a_exit
-	addi $t1, $t1, 1
-	beq $t2, 9, lastTS
-	beq $t2, 32, lastTS
 
 tabspace:
 	bge $t3, 1, lastTS
