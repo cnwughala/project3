@@ -101,6 +101,10 @@ error:
 	sw $t4, 0($sp)
 	jr $ra
 	
+tsCheck:
+	bne $t4, 0, exit2
+	j iteration
+	
 lowercase:
 	bge $t1, 122, error
 	sub $t1, $t1, 87
