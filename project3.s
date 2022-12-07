@@ -100,16 +100,18 @@ error:
 	jr $ra
 	
 lowercase:
-	bge $t1, 122, exit2
-	sub $t2, $t2, 87
+	bge $t1, 122, error
+	sub $t1, $t1, 87
 	j base35	
 	
 uppercase:
-	sub $t2, $t2, 55
+	bge $t1, 90, error
+	sub $t1, $t1, 55
 	j base35
 
 number:
-	sub $t2, $t2, 48
+	bge $t1, 58, error
+	sub $t1, $t1, 48
 	j base35
 
 base35:
