@@ -120,13 +120,12 @@ base35:
 	mflo $t7
 	add $t1, $t7, $zero
 	addi $t5, 1
-	bne $t7, $t4, base35
-
+	bne $t5, $t6, base35
 addLoop:
-	sub $t7, $t7, $t7
-	add $t6, $t2, $t6
-	sw $t6, 4($sp)
-	addi $t4, 1
+	sub $t5, $t5, $t5
+	add $t8, $t1, $t8
+	addi $t6, 1
+	bgt $t4, $s0, error
 
 
 b_exit:
