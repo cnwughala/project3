@@ -91,7 +91,7 @@ cEnd:
 	sw $s3, 4($sp)
 	addi $t0, $t0, 1
 	add $t2, $zero, $zero
-	add $t3, $zero, $zero
+	addi $t3, $zero, 1
 	add $t4, $zero, $zero
 	add $t5, $zero, $zero
 	add $t6, $zero, $zero
@@ -127,9 +127,9 @@ commaEnding:
 	bge $t1, 97, lowercase
 	bge $t1, 65, uppercase
 	bge $t1, 48, number
-	beq $t1, 44, error
 	beq $t1, 32, tsCheck
 	beq $t1, 9, tsCheck
+	beq $s2, $t0, next
 	j error
 	
 error:
