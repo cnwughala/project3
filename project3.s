@@ -77,8 +77,11 @@ a_exit:
 	lw $a0, 0($sp)
 	syscall
 	
+	beq $s8, $s7, nEnd
+	j cEnd
+	
 noSlash:
-	move $a0, 0($sp)
+	la $a0, 0($sp)
 	syscall
 	addi $sp, $sp, 4 #removes decimal/error
 	beq $s8, $s7, nEnd
@@ -88,6 +91,7 @@ cEnd:
 	syscall
 	li $v0, 10
 	syscall
+	
 nEnd:
 	addi $sp, $sp, 4 #removes substring
 	lw $ra, 0($sp)
