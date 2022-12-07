@@ -124,7 +124,7 @@ commaEnding:
 	
 error:
 	addi $s6, $zero, 1
-	li $v0, 11
+	li $v0, 4
 	addi $t4, $zero, 63
 	addi $sp, $sp, -4
 	sw $t4, 0($sp)
