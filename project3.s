@@ -148,6 +148,10 @@ b_exit:
 	bne $t2, 44, ending
 	
 next:
+	li $v0, 11
+	addi $t4, $t8, $zero
+	addi $sp, $sp, -4
+	sw $t4, 0($sp)
 	li $v0, 10
 	syscall
 	li $v0, 11
