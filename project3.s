@@ -53,7 +53,7 @@ tabspace:
 	j aLoop
 	
 a_exit:
-	move $s3, $t1
+	move $s3, $t0
 	lw $s2, 4($sp)
 	add $s2, $s2, $t3
 	addi $sp, $sp, -4
@@ -82,6 +82,8 @@ bLoop:
 	addi $t0, $t0, 1
 	j bLoop
 	
+enterEnding:
+	addi $s8, $zero, 1
 commaEnding:
 	addi $t0, $t0, -1
 	lb $t1, ($t0)
@@ -91,7 +93,6 @@ commaEnding:
 	beq $t1, 44, error
 	beq $s2, $t0, next
 	j error
-
 	
 error:
 	li $v0, 11
@@ -127,8 +128,6 @@ addLoop:
 	add $t8, $t1, $t8
 	addi $t6, 1
 	bgt $t4, $s0, error
-	li $v0, 10
-	syscall
 
 b_exit:
 	li $v0, 1
