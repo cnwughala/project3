@@ -138,15 +138,7 @@ addLoop:
 	beq $s2, $t0, next 
 	bne $s8, $zero, enterEnding
 	j commaEnding
-	
-b_exit:
-	li $v0, 1
-	move $a0, $t6
-	syscall
-	lw $t1, 12($sp)
-	lw $t2, 0($sp)
-	bne $t2, 44, ending
-	
+
 next:
 	li $v0, 11
 	addi $t4, $t8, $zero
