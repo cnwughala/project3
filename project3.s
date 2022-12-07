@@ -90,7 +90,7 @@ commaEnding:
 	bge $t1, 48, number
 	beq $t1, 44, error
 	beq $s2, $t0, next
-	j commaEnding
+	j error
 	
 error:
 	li $v0, 11
@@ -127,7 +127,7 @@ addLoop:
 	add $t6, $t2, $t6
 	sw $t6, 4($sp)
 	addi $t4, 1
-	j bLoop
+
 
 b_exit:
 	li $v0, 1
