@@ -80,6 +80,11 @@ noSlash:
 	addi $sp, $sp, 4 #removes decimal/error
 	beq $s8, $s7, nEnd
 cEnd:
+	li $v0, 11
+	la $a0, 44
+	syscall
+	li $v0, 10
+	syscall
 nEnd:
 	addi $sp, $sp, 4 #removes substring
 	lw $ra, 0($sp)
