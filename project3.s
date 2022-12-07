@@ -86,7 +86,9 @@ commaEnding:
 	bge $t1, 97, lowercase
 	bge $t1, 65, uppercase
 	bge $t1, 48, number
+	beq $t1, 44, error
 	beq $s2, $t0, next
+	j error
 	
 lowercase:
 	sub $t2, $t2, 87
