@@ -74,6 +74,9 @@ cEnd:
 	lw $a0, 0($sp)
 	syscall
 	
+	li $v0, 10
+	syscall
+	
 noSlash:
 	move $a0, $t6
 	syscall
