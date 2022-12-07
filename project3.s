@@ -12,6 +12,7 @@ main:
 	
 	addi $s0, $zero, 4
 	addi $s1, $zero, 35
+	addi $s7, $zero, 1
 	move $t0, $a0
 	
 	addi $sp, $sp, -4
@@ -61,8 +62,7 @@ a_exit:
 	
 	jal sub_b
 	beq $s6, $s7, noSlash
-	
-cEnd:
+
 	move $a0, $t6
 	syscall
 	
@@ -70,7 +70,7 @@ cEnd:
 	la $a0, 47
 	syscall
 	
-	li $v0, 11
+	li $v0, 1
 	lw $a0, 0($sp)
 	syscall
 	
