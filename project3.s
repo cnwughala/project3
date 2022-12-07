@@ -89,9 +89,8 @@ cEnd:
 	li $v0, 11
 	la $a0, 44
 	syscall
-	li $v0, 10
-	syscall
-	
+	move $t0, $s3
+	j aLoop
 nEnd:
 	lw $ra, 8($sp)
 	jr $ra
