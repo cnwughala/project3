@@ -24,9 +24,8 @@ main:
 	syscall
 	
 sub_a:
-	addi $sp, $sp, -4
-	sw $ra, 0($sp)
-	lw $t0, 4($sp)
+	sw $ra, 8($sp)
+	lw $t0, 12($sp)
 aLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, a_exit
@@ -57,10 +56,9 @@ tabspace:
 	
 a_exit:
 	move $s3, $t0
-	lw $s2, 4($sp)
+	lw $s2, 12($sp)
 	add $s2, $s2, $t3
-	addi $sp, $sp, -4
-	sw $s2, 0($sp)
+	sw $s2, 4($sp)
 	
 	jal sub_b
 	beq $s6, $s7, noSlash
@@ -107,7 +105,7 @@ nEnd:
 #-----------------------------------------------------------------------------------------#
 	
 sub_b:
-	lw $t0, 0($sp)
+	lw $t0, 4($sp)
 bLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, commaEnding
@@ -135,7 +133,6 @@ error:
 	addi $s6, $zero, 1
 	li $v0, 4
 	addi $t4, $zero, 63
-	addi $sp, $sp, -4
 	sw $t4, 0($sp)
 	jr $ra
 	
@@ -178,7 +175,6 @@ addLoop:
 next:
 	li $v0, 1
 	add $t4, $t8, $zero
-	addi $sp, $sp, -4
 	sw $t4, 0($sp)
 	jr $ra
 	
