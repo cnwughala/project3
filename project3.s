@@ -17,6 +17,7 @@ main:
 	
 	addi $sp, $sp, -16
 	sw $t0, 12($sp)
+	sw $t0, 4($sp)
 	
 	jal sub_a
 	
@@ -56,7 +57,7 @@ tabspace:
 	
 a_exit:
 	move $s3, $t0
-	lw $s2, 12($sp)
+	lw $s2, 4($sp)
 	add $s2, $s2, $t3
 	sw $s2, 4($sp)
 	
@@ -95,6 +96,8 @@ cEnd:
 	add $t5, $zero, $zero
 	add $t6, $zero, $zero
 	add $t7, $zero, $zero
+	add $t8, $zero, $zero
+	add $s6, $zero, $zero
 
 	j aLoop
 	
@@ -106,6 +109,7 @@ nEnd:
 	
 sub_b:
 	lw $t0, 4($sp)
+	addi $t0, $t0, 1
 bLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, commaEnding
@@ -116,8 +120,8 @@ bLoop:
 	
 enterEnding:
 	addi $s8, $zero, 1
-	
 commaEnding:
+	beq $s2, $t0, next
 	addi $t0, $t0, -1
 	lb $t1, ($t0)
 	bge $t1, 97, lowercase
@@ -126,7 +130,6 @@ commaEnding:
 	beq $t1, 44, error
 	beq $t1, 32, tsCheck
 	beq $t1, 9, tsCheck
-	beq $s2, $t0, next
 	j error
 	
 error:
@@ -168,7 +171,6 @@ addLoop:
 	add $t8, $t1, $t8
 	addi $t6, 1
 	bgt $t6, $s0, error
-	beq $s2, $t0, next 
 	bne $s8, $zero, enterEnding
 	j commaEnding
 
