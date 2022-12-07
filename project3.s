@@ -45,14 +45,14 @@ lastTS:
 	j aLoop
 
 tabspace:
-
+	bge $t2, 1, lastTS
 	addi $t3, $t3, 1
 	addi $t0, $t0, 1
 	j aLoop
 	
 a_exit:
+	sw $s2 
 	addi $sp, $sp, -4
-	
 	sw $t1, 0($sp)
 	li $v0, 1
 	add $a0, $t3, $zero
@@ -64,6 +64,9 @@ a_exit:
 	
 	add $s3, $t0, $t8
 	sw $s3, 8($sp)
+	
+	li $v0, 10
+	syscall
 	jal sub_b
 	
 #-----------------------------------------------------------------------------------------#
