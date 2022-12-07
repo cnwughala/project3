@@ -94,9 +94,9 @@ commaEnding:
 	
 error:
 	li $v0, 11
-	addi $t5, $zero, 63
+	addi $t4, $zero, 63
 	addi $sp, $sp, -4
-	sw $t5, 0($sp)
+	sw $t4, 0($sp)
 	jr $ra
 	
 lowercase:
