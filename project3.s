@@ -109,7 +109,6 @@ nEnd:
 	
 sub_b:
 	lw $t0, 4($sp)
-	addi $t0, $t0, 1
 bLoop:
 	lb $t1, ($t0)
 	beq $t1, 44, commaEnding
