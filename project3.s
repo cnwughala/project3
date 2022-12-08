@@ -175,6 +175,7 @@ addLoop:
 	j commaEnding
 
 next:
+	beq $t6, 0, error
 	li $v0, 1
 	add $t4, $t8, $zero
 	sw $t4, 0($sp)
